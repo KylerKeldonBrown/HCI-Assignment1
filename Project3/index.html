@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CMPS3141 Grade Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Load Mavo -->
+  <script src="https://get.mavo.io/mavo.js"></script>
+  <link rel="stylesheet" href="https://get.mavo.io/mavo.css"/>
+</head>
+<body>
+  <main mv-app="gradeCalc" mv-storage="local">
+    <h1>CMPS3141 Grade Calculator</h1>
+
+    <!-- Participation -->
+    <section>
+      <h2>Participation (10%)</h2>
+      Studio: <input type="number" property="studio" min="0" max="100"><br>
+      Feedback: <input type="number" property="feedback" min="0" max="100"><br>
+      Other: <input type="number" property="otherParticipation" min="0" max="100"><br>
+    </section>
+
+    <!-- Tests -->
+    <section>
+      <h2>Tests (25%)</h2>
+      Test 1: <input type="number" property="test1" min="0" max="100"><br>
+      Test 2: <input type="number" property="test2" min="0" max="100"><br>
+    </section>
+
+    <!-- Homework -->
+    <section>
+      <h2>Homework (20%)</h2>
+      <ul property="homeworks" mv-multiple>
+        <li>
+          Homework: <input type="number" property="hw" min="0" max="100">
+        </li>
+      </ul>
+      <button mv-action="homeworks += {}">+ Add Homework</button>
+    </section>
+
+    <!-- Project -->
+    <section>
+      <h2>Project (15%)</h2>
+      <input type="number" property="project" min="0" max="100">
+    </section>
+
+    <!-- Final Exam -->
+    <section>
+      <h2>Final Exam (30%)</h2>
+      <input type="number" property="finalExam" min="0" max="100">
+    </section>
+
+    <!-- What-If -->
+    <section>
+      <h2>What-If Scenario</h2>
+      Hypothetical Final Exam: <input type="number" property="whatIfFinal" min="0" max="100">
+    </section>
+
+    <!-- Results -->
+    <section>
+      <h2>Results</h2>
+      <p>Participation Avg: <span property="partAvg" mv-value="(studio + feedback + otherParticipation)/count(studio,feedback,otherParticipation)"></span></p>
+      <p>Homework Avg: <span property="hwAvg" mv-value="avg(homeworks.hw)"></span></p>
+      <p>Test Avg: <span property="testAvg" mv-value="avg(test1,test2)"></span></p>
+      <p>Project: <span property="projectScore" mv-value="project"></span></p>
+      <p>Final Exam: <span property="finalScore" mv-value="finalExam"></span></p>
+
+      <!-- Final Weighted Score -->
+      <p><strong>Final Grade (0–100):</strong> 
+        <span property="finalGrade"
+          mv-value="((partAvg*0.1) + (hwAvg*0.2) + (testAvg*0.25) + (project*0.15) + (finalExam*0.3))">
+        </span>
+      </p>
+
+      <!-- What-If Final -->
+      <p><strong>Projected Grade with What-If Final:</strong> 
+        <span property="whatIfGrade"
+          mv-value="((partAvg*0.1) + (hwAvg*0.2) + (testAvg*0.25) + (project*0.15) + (whatIfFinal*0.3))">
+        </span>
+      </p>
+
+      <!-- Letter Grade -->
+      <p><strong>Letter Grade:</strong> <span property="letter"></span></p>
+
+      <!-- Progress Visualization -->
+      <progress max="100" property="progressBar" 
+        mv-value="finalGrade"></progress>
+    </section>
+
+  </main>
+  <script src="index.js"></script>
+</body>
+</html>

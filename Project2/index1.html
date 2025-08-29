@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Neo & Trinity Expense Tracker - Home</title>
+</head>
+<body>
+  <h1>Neo & Trinity Expense Tracker</h1>
+
+  <!-- Navigation -->
+  <nav>
+    <p>
+      <a href="index1.html">Home</a> |
+      <a href="history.html">Expense History</a> |
+      <a href="contact.html">Contact</a>
+    </p>
+  </nav>
+
+  <!-- Balance Summary -->
+  <section>
+    <h2>Balance Summary</h2>
+    <p><strong>Total Balance:</strong> Trinity owes Neo $25</p>
+  </section>
+
+  <!-- Add New Expense -->
+  <section>
+    <h2>Add New Expense</h2>
+    <form action="mailto:example@email.com" method="post">
+      <label>Payer:
+        <select name="payer">
+          <option>Neo</option>
+          <option>Trinity</option>
+          <option>Joint Card</option>
+        </select>
+      </label>
+      <br><br>
+
+      <label>Description:
+        <input type="text" name="description" value="Groceries">
+      </label>
+      <br><br>
+
+      <label>Amount:
+        <input type="number" name="amount" value="50">
+      </label>
+      <br><br>
+
+      <label>Category:
+        <select name="category">
+          <option>Shared</option>
+          <option>Personal</option>
+        </select>
+      </label>
+      <br><br>
+
+      <button type="submit">Add Expense</button>
+    </form>
+  </section>
+</body>
+</html>
